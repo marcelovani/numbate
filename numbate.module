@@ -10,8 +10,10 @@
 function numbate_help($path, $arg) {
   switch ($path) {
     case 'admin/help#numbate':
-      return t('Please use your form ID from your Numbate account.' .
-        ' Please see http://numbate.com for a demo and more information.');
+      $text = 'Please use your form ID from your Numbate account.' .
+          'See http://numbate.com for a demo and more information.';
+      return t($text);
+      break;
   }
 }
 
@@ -86,11 +88,16 @@ function numbate_settings_form() {
     '#required' => TRUE,
   );
 
-  $options = array(t('On every page except the listed pages.'), t('On the listed pages only.'));
-  $description = t('Enter one page per line as Drupal paths. The "*" character is a wildcard.' .
-    ' Example paths are %blog for the blog page and %blog-wildcard for every personal blog.' .
-    ' %front is the front page.',
-    array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>'));
+  $options = array(
+    t('On every page except the listed pages.'), t('On the listed pages only.')
+  );
+
+  $text = 'Enter one page per line as Drupal paths. The "*" character is a wildcard. ';
+  $text .= 'Example paths are %blog for the blog page and %blog-wildcard for every personal blog.';
+  $text .= ' %front is the front page.';
+  $description = t($text, array(
+    '%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')
+  );
 
   $form['numbate_visibility_settings'] = array(
     '#type' => 'fieldset',
