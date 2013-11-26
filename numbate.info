@@ -2,3 +2,4 @@ name = Numbate
 description = Integrates Numbate http://numbate.com/
 package = Advertising
 core = 7.x
+configure = admin/config/system/numbate
